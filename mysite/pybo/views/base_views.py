@@ -58,7 +58,7 @@ def detail(request, question_id):
     elif so == 'default':
         pass
     else:   # recent
-        comments_list = Comment.objects.order_by('-create_date')
+        comments_list = Comment.objects.filter(question=question).order_by('-create_date')
 
     paginator = Paginator(comments_list, 10)  # Show 10 comments per page
     comments = paginator.get_page(page)
